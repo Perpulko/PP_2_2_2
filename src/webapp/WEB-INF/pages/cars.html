@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Cars</title>
+</head>
+<body>
+<h1>th:each</h1>
+<table border="1">
+    <tr>
+        <th>Car color</th>
+        <th>Model</th>
+        <th>Id</th>
+    </tr>
+    <tr th:each="car, state : ${cars}">
+        <td th:utext="${car.color}">Car color</td>
+        <td th:utext="${car.model}">Model</td>
+        <td th:utext="${car.id}">Id</td>
+    </tr>
+</table>
+</body>
+</html>
+<!--<body>-->
+<!--Hello!-->
+<!--<a href="/goodbye">Say goodbye</a> or <a href="/exit">Exit!</a>-->
+<!--or <a href="/hello?name=Robin&surname=Daniels">Request with param</a>-->
+<!--<p th:text="${message}"></p>-->
+<!--</body>-->
