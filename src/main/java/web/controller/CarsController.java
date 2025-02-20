@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.service.CarServiceImpl;
 
-
-
 @Controller
 public class CarsController {
 
@@ -20,33 +18,27 @@ public class CarsController {
 
     @GetMapping("/cars")
     public String Cars(@RequestParam(value = "count", required = false) Integer count, Model model) {
-        if (count == null) {
+        if (count == null || count >= 5) {
             model.addAttribute("cars", carService.getCars(5));
             return "cars";
         }
-        switch (count) {
-            case 0:
-                model.addAttribute("cars", carService.getCars(0));
-                break;
-            case 1:
-                model.addAttribute("cars", carService.getCars(1));
-                break;
-            case 2:
-                model.addAttribute("cars", carService.getCars(2));
-                break;
-            case 3:
-                model.addAttribute("cars", carService.getCars(3));
-                break;
-            case 4:
-                model.addAttribute("cars", carService.getCars(4));
-                break;
-            case 5:
-                model.addAttribute("cars", carService.getCars(5));
-                break;
-            default:
-                model.addAttribute("cars", carService.getCars(5));
-                break;
+        if (count <= 0) {
+            model.addAttribute("cars", carService.getCars(0));
+            return "cars";
         }
-        return "cars";
+        if (count == 1) {
+            model.addAttribute("cars", carService.getCars(1));
+            return "cars";
+        }
+        if (count == 2) {
+            model.addAttribute("cars", carService.getCars(2));
+            return "cars";
+        } else if (count == 3) {
+            model.addAttribute("cars", carService.getCars(3));
+            return "cars";
+        } else {
+            model.addAttribute("cars", carService.getCars(4));
+            return "cars";
+        }
     }
 }
