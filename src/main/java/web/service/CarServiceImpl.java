@@ -2,7 +2,6 @@ package web.service;
 
 import org.springframework.stereotype.Service;
 import web.model.Car;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -17,6 +16,6 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public List<Car> getCars(int count) {
-        return cars.subList(0, count);
+        return cars.stream().limit(count).toList();
     }
 }
